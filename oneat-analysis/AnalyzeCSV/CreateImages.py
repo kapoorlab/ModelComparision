@@ -119,14 +119,14 @@ def TimelapseImage(csv_file, image, Label, save_dir):
   ReturnImage = image
   for t in range(0, len(time)):
       
-      Currentimage = image[int(time[t])-1, :, :]
+      Currentimage = image[int(time[t]), :, :]
       if math.isnan(x[t]):
          continue 
       else:
          location = (int(x[t]), int(y[t]))
          cv2.circle(Currentimage, location, 2,(255,0,0), thickness = -1 )
          cv2.circle(Currentimage, location, 20, (255,0,0), thickness = 2)
-      ReturnImage[int(time[t])-1, :, :] = Currentimage
+      ReturnImage[int(time[t]), :, :] = Currentimage
          
   save_tiff_imagej_compatible((save_dir  + Label + '.tif'  ) , ReturnImage, axes)
       
